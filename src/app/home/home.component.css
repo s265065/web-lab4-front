@@ -1,0 +1,10 @@
+.current-user > span {
+  font-size: larger;
+  font-family: Courier New;
+  margin: 5px;
+  border-radius: 10px;
+  border-style: groove;
+  padding: 5px;
+  color: azure;
+  background-color: rgba(250, 250, 250, 0.31);
+}

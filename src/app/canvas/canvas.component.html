@@ -1,0 +1,6 @@
+<br>
+<input type="hidden" [(ngModel)]="selectX" id="canvasX">
+<input type="hidden" [(ngModel)]="selectY" id="canvasY">
+<button style="display: none" type="submit"></button>
+<br>
+<canvas #myCanvas width="500" height="500" (click)="onClick($event)"> </canvas>
