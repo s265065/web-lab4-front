@@ -2,20 +2,20 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Dot } from '../_models/dot';
+import { Point } from '../_models/point';
 
 @Injectable()
 export class DotService {
 
   constructor() {}
 
-  private dots: Dot[] = [];
+  private dots: Point[] = [];
 
   getDots() {
     return this.dots;
   }
 
-  addDot(dot: Dot) {
+  addDot(dot: Point) {
     console.log(this.dots);
     this.dots.push(dot);
   }
