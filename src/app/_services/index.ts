@@ -2,4 +2,4 @@
 export * from './authentication.service';
 export * from './user.service';
 export * from './canvas.service';
-export * from './dot.service';
+export * from './point.service';

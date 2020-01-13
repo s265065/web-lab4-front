@@ -2,6 +2,8 @@
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AlertService, AuthenticationService } from '../_services/index';
+import {User} from '../_models';
+import {md5} from '../utils/md5';
 
 @Component({
     moduleId: module.id.toString(),
@@ -10,7 +12,7 @@ import { AlertService, AuthenticationService } from '../_services/index';
 })
 
 export class LoginComponent implements OnInit {
-    model: any = {};
+    model: User = new User;
     loading = false;
     returnUrl: string;
 
@@ -25,19 +27,27 @@ export class LoginComponent implements OnInit {
         this.authenticationService.logout();
 
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/home';
     }
 
     login() {
+        const { username, password } = this.model;
+
         this.loading = true;
-        this.authenticationService.login(this.model.username, this.model.password)
+        console.log(md5(password));
+        this.authenticationService.login(username, md5(password))
             .subscribe(
                 data => {
+                    localStorage.setItem('currentName', username);
+                    localStorage.setItem('currentPass', md5(password));
+                    console.log(localStorage.getItem('currentPass'));
                     this.router.navigate([this.returnUrl]);
                 },
+
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
-                });
+                }
+                );
     }
 }

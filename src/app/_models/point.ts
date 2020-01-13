@@ -1,4 +1,4 @@
-export class Dot {
+export class Point {
   constructor(x: number, y: number, r: number, time: any) {
     this.x = x;
     this.y = y;

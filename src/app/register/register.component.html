@@ -3,11 +3,11 @@
   <div class="register">
     <h2>Регистрация</h2>
     <form name="form" class="form" (ngSubmit)="f.form.valid && register()" #f="ngForm" novalidate>
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
-        <label for="firstName">Имя: </label>
-        <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />
-        <div *ngIf="f.submitted && !firstName.valid" class="help-block">Необходимо имя</div>
-      </div>
+<!--      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">-->
+<!--        <label for="firstName">Имя: </label>-->
+<!--        <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" required />-->
+<!--        <div *ngIf="f.submitted && !firstName.valid" class="help-block">Необходимо имя</div>-->
+<!--      </div>-->
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
         <label for="username">Логин: </label>
         <input type="text" class="form-control" name="username" [(ngModel)]="model.username" #username="ngModel" required />

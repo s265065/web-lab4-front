@@ -1,6 +1,6 @@
-import {Injectable, } from '@angular/core';
-import {Dot} from '../_models/dot';
-import {DotService} from './dot.service';
+import {Injectable,} from '@angular/core';
+import {Point} from '../_models/point';
+import {PointService} from './point.service';
 
 @Injectable({providedIn: 'root'})
 
@@ -10,7 +10,7 @@ export class CanvasService {
   private selectY: number;
   private selectedR: number[] = [];
   private context: any;
-  public dotService: DotService = new DotService();
+  public dotService: PointService;
 
   CANVAS_WIDTH = 500;
   CANVAS_HEIGHT = 500;
@@ -18,43 +18,31 @@ export class CanvasService {
   CANVAS_STEP_Y = this.CANVAS_HEIGHT / 2 / 5;
   LINE_COLOR = '#ffffff';
 
-  // graphptrn: CanvasPattern;
-  // backptrn: CanvasPattern;
+    getSelectedR(){
+        return this.selectedR;
+    }
+
+    clearCtx() {
+        this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
+    }
 
   setContext(ctx: any) {
     this.context = ctx;
-
-    // const background = new Image();
-    // background.src = 'assets/img/backgrounds/black.jpg';
-    //
-    // const foreground = new Image();
-    // foreground.src = 'assets/img/backgrounds/violet.jpg';
-    //
-    // this.graphptrn = this.context.createPattern(foreground, 'no-repeat');
-    // this.backptrn = this.context.createPattern(background, 'no-repeat');
+      const background = document.getElementById('blackBackgroundImage');
+      const backptrn = this.context.createPattern(background, 'no-repeat');
+      this.context.fillStyle = backptrn;
   }
 
-  draw(r: number) {
-
+  draw(r: number, alpha: number) {
+      this.context.globalAlpha = alpha;
     const R = r;
     const halfR = r / 2;
 
-    const background = new Image();
-    background.src = 'assets/img/backgrounds/black.jpg';
-
-    const foreground = new Image();
-    foreground.src = 'assets/img/backgrounds/violet.jpg';
+    const foreground = document.getElementById('violetBackgroundImage');
 
     const graphptrn = this.context.createPattern(foreground, 'no-repeat');
-    const backptrn = this.context.createPattern(background, 'no-repeat');
-
-    this.context.clearRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
-    this.context.fillStyle = backptrn;
-    // this.context.fillStyle = '#3477f1';
-    this.context.fillRect(0, 0, this.CANVAS_WIDTH, this.CANVAS_HEIGHT);
 
     this.context.fillStyle = graphptrn;
-    // this.context.fillStyle = '#9711aa';
     this.context.beginPath();
     this.context.moveTo(this.CANVAS_WIDTH / 2, this.CANVAS_HEIGHT / 2);
     this.context.lineTo(this.CANVAS_WIDTH / 2, this.CANVAS_HEIGHT / 2 - this.CANVAS_STEP_Y * halfR);
@@ -87,7 +75,6 @@ export class CanvasService {
   }
 
   redraw(r) {
-    // const intR = r;
     const intR = parseInt(r, 10);
     if (!isNaN(intR)) {
       if (this.AVAILABLE_R.indexOf(intR) !== -1) {
@@ -97,12 +84,15 @@ export class CanvasService {
           // remove r from selected
           this.selectedR = this.selectedR.filter(e => e !== intR);
         }
-        if (this.selectedR.length !== 1) {
-          console.log(' you need to choose one and only one r!');
+        if (this.selectedR.length < 1) {
+            console.log('choose r!');
         } else {
           // redraw with new r
-          console.log('working!');
-          this.draw(this.selectedR[0]);
+            this.clearCtx();
+            for (let i = 0; i < this.selectedR.length; i++) {
+                this.draw(this.selectedR[i], (i + 1) / this.selectedR.length);
+            }
+         // this.draw(this.selectedR[0], 1);
         }
       } else {
         console.log('unavailable r!');
@@ -110,7 +100,7 @@ export class CanvasService {
     } else {
       console.log('r is not a number!');
     }
-    console.log(this.selectedR);
+   // console.log(this.selectedR);
   }
 
   onClick(event: any) {
@@ -124,7 +114,7 @@ export class CanvasService {
     const visualX = (event.offsetX - centerX) / zoomX;
     const visualY = (centerY - event.offsetY) / zoomY;
 
-    console.log(visualX, ';', visualY);
+    // console.log(visualX, ';', visualY);
 
     const rightPoint = new Image();
     rightPoint.src = 'assets/img/flashes/green-flash.png';
@@ -132,19 +122,21 @@ export class CanvasService {
     const wrongPoint =  new Image();
     wrongPoint.src = 'assets/img/flashes/miss-flash.png';
 
-    console.log(event.offsetX, ';', event.offsetY);
-
+    // console.log(event.offsetX, ';', event.offsetY);
+    //   for (let i = 0; i < this.selectedR.length; i++) {
+    //       this.dotService.addDot(new Point(visualX, visualY, this.selectedR[i], Date.now()));
+    //   }
     this.context.drawImage( rightPoint, event.offsetX - 10, event.offsetY - 10, 15, 15);
     // this.context.fillStyle = '#00ff00';
     // this.context.fillRect(event.offsetX - 5, event.offsetY - 5, 10, 10);
 
-    this.dotService.addDot(new Dot(visualX, visualY, this.selectedR[0], Date.now()));
+   // this.dotService.addDot(new Point(visualX, visualY, this.selectedR[0], Date.now()));
 
-    console.log(this.context);
+    // console.log(this.context);
     return [visualX, visualY];
   }
 
-  drawDots(dots: Dot[]) {
+  drawDots(dots: Point[]) {
       const centerX = this.CANVAS_WIDTH / 2;
       const centerY = this.CANVAS_HEIGHT / 2;
 
@@ -167,10 +159,12 @@ export class CanvasService {
     for (i = 0; i < dots.length; i++) {
       this.context.fillStyle = '#00ff00';
       this.context.fillRect(dots[i].x * zoomX - centerX - 10, centerY - dots[i].y * zoomY - 10, 10, 10);
-      console.log(dots[i].x * zoomX + centerX, centerY - dots[i].y * zoomY );
-      console.log(dots[i].x, dots[i].y);
-      console.log(this.context);
-      this.dotService.addDot(new Dot(dots[i].x, dots[i].y, this.selectedR[0], Date.now()));
+      // console.log(dots[i].x * zoomX + centerX, centerY - dots[i].y * zoomY );
+      // console.log(dots[i].x, dots[i].y);
+      // console.log(this.context);
+      //   for (let i = 0; i < this.selectedR.length; i++) {
+      //       this.dotService.addDot(new Point(dots[i].x, dots[i].y, this.selectedR[i], Date.now()));
+      //   }
     }
   }
   //
