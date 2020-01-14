@@ -7,7 +7,7 @@ export class AuthenticationService {
 
     login(username: string, password: string) {
         console.log(password);
-        return this.http.get('//localhost:8080/api/v1/user/login', {
+        return this.http.get('http://localhost:26180/api/v1/user/login', {
             headers: { 'Authorization': 'Basic ' + btoa(username + ':' + password) }
         });
     }

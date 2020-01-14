@@ -1,7 +1,15 @@
-﻿<div class="current-user">
+﻿<div class="home">
+    <div class="current-user">
     <span>вы вошли как {{currentUser}}!</span>
     <p><a [routerLink]="['/login']" (click)="logout()">Выйти</a></p>
+    </div>
+    <div class="view">
+        <div class="canvas-form">
+            <app-request-form class="request-form"></app-request-form>
+            <app-canvas class = "canvas"></app-canvas>
+        </div>
+        <div class="table-view">  <app-history-table id="table"></app-history-table></div>
+
+    </div>
+
 </div>
-<app-request-form></app-request-form>
-<app-canvas></app-canvas>
-<app-history-table></app-history-table>

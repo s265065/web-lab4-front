@@ -1,19 +1,19 @@
 export class Point {
-  constructor(x: number, y: number, r: number, time: any) {
+  constructor(x: number, y: number, r: number, created: any) {
     this.x = x;
     this.y = y;
     this.r = r;
-    this.result = false;
-    this.time = time;
+    this.hit = false;
+    this.created = created;
   }
 
   x: number;
   y: number;
   r: number;
-  result?: boolean;
-  time: any;
+  hit?: boolean;
+  created: any;
 
   public setResult(result: boolean) {
-    this.result = result;
+    this.hit = result;
   }
 }

@@ -11,43 +11,30 @@ import {PointService} from '../_services';
 })
 export class RequestFormComponent implements OnInit {
 
-    // @ViewChild('myCanvas', {static: true}) canvasRef: ElementRef;
-
     selectedX: number[] = [];
     selectedY: string;
     selectedR: number[] = [];
     AVAILABLE_R: number[] = [-4, -3, -2, -1, 0, 1, 2, 3, 4];
     AVAILABLE_X: number[] = [-4, -3, -2, -1, 0, 1, 2, 3, 4];
-    currentR: number;
 
-    constructor(private canvasServ: CanvasService, private pointService: PointService) {}
+    constructor(private canvasServ: CanvasService) {}
 
-    ngOnInit() {
-        // const ctx = this.canvasRef.nativeElement.getContext('2d');
-        // this.canvasServ.setContext(ctx);
-        // this.canvasServ.draw(0);
-    }
-
-
+    ngOnInit() { }
 
     changeR(selectR) {
         this.canvasServ.redraw(selectR);
     }
 
     submitDot() {
-      for (let i = 0; i < this.selectedR.length; i++) {
+        let numberY: number;
+        if (isNaN(parseFloat(this.selectedY))){
+             numberY = -10;
+        } else {numberY = parseFloat(this.selectedY);}
+        for (let i = 0; i < this.selectedR.length; i++) {
           for (let j = 0; j < this.selectedX.length; j++) {
-              console.log(new Point(this.selectedX[j], parseFloat(this.selectedY), this.selectedR[i], Date.now()));
-              this.pointService.addDot(new Point(this.selectedX[j], parseFloat(this.selectedY), this.selectedR[i], Date.now())).subscribe(value => {
-                  console.log(value); });
+              const point = new Point(this.selectedX[j], numberY, this.selectedR[i], Date.now());
+              this.canvasServ.drawDot(point);
           }
       }
     }
-
-    // onClick(event: any) {
-    //   let dot: number[];
-    //   dot = this.canvasServ.onClick(event);
-    //   this.selectX = dot[0];
-    //   this.selectY = dot[1];
-    // }
 }

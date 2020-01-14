@@ -1,7 +1,7 @@
-<p-table [columns]="cols" [value]="dots">
+<p-table [columns]="cols" [value]="dots" >
   <ng-template pTemplate="header">
     <tr>
-      <th *ngFor="let col of cols" [pSortableColumn]="col.data">
+      <th *ngFor="let col of cols" >
         {{col.header}}
         <p-sortIcon [field]="col.data"></p-sortIcon>
       </th>
@@ -13,8 +13,8 @@
       <td>{{dot.x}}</td>
       <td>{{dot.y}}</td>
       <td>{{dot.r}}</td>
-      <td>{{dot.result ? 'котик долетел' : 'котик дрейфует в бесконечной пустоте космоса'}}</td>
-      <td>{{dot.time | date:'medium'}}</td>
+      <td>{{dot.hit ? 'котик долетел' : 'котик дрейфует в бесконечной пустоте космоса'}}</td>
+      <td>{{dot.created | date:'medium'}}</td>
     </tr>
   </ng-template>
 
@@ -25,4 +25,6 @@
       </td>
     </tr>
   </ng-template>
+
+
 </p-table>

@@ -2,16 +2,17 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {PaginatorModule} from 'primeng/paginator';
+
 
 import {AppComponent} from './app.component';
 import {routing} from './app.routing';
 
-import {AlertComponent} from './_directives';
-import {AuthGuard} from './_guards';
-import {AlertService, AuthenticationService, CanvasService, PointService, UserService} from './_services';
-import {HomeComponent} from './home';
-import {LoginComponent} from './login';
-import {RegisterComponent} from './register';
+import {AuthGuard} from './_guards/auth.guard';
+import {AuthenticationService, CanvasService, PointService, UserService} from './_services/index';
+import {HomeComponent} from './home/home.component';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
 import {RequestFormComponent} from './request-form/request-form.component';
 import {CanvasComponent} from './canvas/canvas.component';
 import {ButtonModule, CheckboxModule, KeyFilterModule, TableModule} from 'primeng';
@@ -36,7 +37,6 @@ registerLocaleData(localeRu, 'ru');
     ],
     declarations: [
         AppComponent,
-        AlertComponent,
         HomeComponent,
         LoginComponent,
         RegisterComponent,
@@ -47,8 +47,9 @@ registerLocaleData(localeRu, 'ru');
     providers: [
         AuthGuard,
         NotAuthGuard,
-        AlertService,
         AuthenticationService,
+        HistoryTableComponent,
+        RequestFormComponent,
         UserService,
         PointService,
         CanvasService,

@@ -12,6 +12,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
+  clickG(){
+
+  }
+
   clickD() {
     window.open('https://docs.google.com/spreadsheets/d/1hGx52Q6omjFo7D_0L_FXXhb5FyVR2I6m2bmbOKYdEVA/edit#gid=719057914&range=Z5');
   }

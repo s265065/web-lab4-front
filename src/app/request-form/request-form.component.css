@@ -2,6 +2,14 @@
   font-family: Courier New, monospace;
 }
 
+.rInput, .xInput, .yInput, .btn-cntnr
+{
+    margin-left:auto;
+    margin-right:auto;
+    display: table;
+}
+
+
 .amazing-checkbox {
   display: inline-block;
   border: medium dotted azure;
@@ -53,6 +61,11 @@
   background-color: #34b3b3;
 }
 
+.amazing-checkbox > label > p-checkbox:checked {
+    display: none;
+    background: url('../../assets/img/paws/white-paw.png') center/contain no-repeat;
+}
+
 input{
   font-size: large;
   font-family: Courier New, monospace;
@@ -87,5 +100,6 @@ input{
 ::ng-deep .btn-primary .ui-button:hover {
   border-color: #191919;
 }
+
 
 
