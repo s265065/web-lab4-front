@@ -1,0 +1,46 @@
+<div class="main">
+    <app-header></app-header>
+    <div class="register">
+        <h2>Регистрация</h2>
+        <form #f="ngForm" (ngSubmit)="f.form.valid && register()" class="form" name="form" novalidate>
+            <div *ngIf="errorMessage" class="alert alert-danger" role="alert">{{errorMessage}}</div>
+            <span class="reauth-email" id="reauth-email"></span>
+            <div [ngClass]="{ 'has-error': f.submitted && !username.valid }" class="form-group">
+                <label for="username">Логин: </label>
+                <input #username="ngModel" [(ngModel)]="user.username" class="form-control" name="username" required
+                       type="text"/>
+                <div *ngIf="f.submitted && !username.valid" class="help-block">нужен логин</div>
+            </div>
+            <div [ngClass]="{ 'has-error': f.submitted && !password.valid }" class="form-group">
+                <label for="password">Пароль: </label>
+                <input #password="ngModel" [(ngModel)]="user.password" class="form-control" minlength="4"
+                       name="password" required type="password"/>
+                <div *ngIf="f.submitted && !password.valid" class="help-block">
+
+                    <div *ngIf="password.errors.required">
+                        пароль тоже нужен
+                    </div>
+                    <div *ngIf="password.errors.minlength">
+                        слтшком короткий. хотя бы 4 символа
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn-primary" type="submit">Зарегистрироваться</button>
+                <a [routerLink]="['/login']" class="btn-link">Войти</a>
+            </div>
+        </form>
+    </div>
+</div>
+<img alt="" class="cats" src="./assets/gifs/dancing.gif">
+<div class="info">
+  <span>Добрый вечер, солдат!
+  Здесь мы запускаем самых отважных в космос.
+  И именно ты можешь решать куда же отправится следующий.
+  Для этого всего лишь нужно зарегистрироваться чтобы вступить в наши ряды.
+  Выбери себе кодовое имя, под которым тебя будут знать здесь и придумай пароль.
+  Никому не говори свой пароль, чтобы никто другой не мог отправлять котиков
+  в космос от твоего имени.
+  И добро пожаловать в наши ряды!</span>
+</div>
+

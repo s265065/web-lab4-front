@@ -1,63 +1,44 @@
-﻿import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {PaginatorModule} from 'primeng/paginator';
-
+import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
+import {LoginComponent} from './components/login/login.component';
+import {RegisterComponent} from './components/register/register.component';
+import {FormsModule} from '@angular/forms';
+import {AuthService} from './services/auth.service';
+import {HttpClientModule} from '@angular/common/http';
+import {AccountService} from './services/account.service';
+import {HomeComponent} from './components/home/home.component';
 import {routing} from './app.routing';
+import {HistoryComponent} from './components/history/history.component';
+import {CheckPointComponent} from './components/check-point/check-point.component';
+import {PointsService} from './services/points.service';
+import {HttpModule} from '@angular/http';
+import {InfoComponent} from './components/info/info.component';
+import {HeaderComponent} from './components/header/header.component';
+import {CheckboxModule} from 'primeng/checkbox';
+import {ButtonModule} from 'primeng/button';
+import {TableModule} from 'primeng/table';
+import {AuthGuard} from './urlPermission/auth.guard';
+import {NotAuthGuard} from './urlPermission/not-auth.guard';
 
-import {AuthGuard} from './_guards/auth.guard';
-import {AuthenticationService, CanvasService, PointService, UserService} from './_services/index';
-import {HomeComponent} from './home/home.component';
-import {LoginComponent} from './login/login.component';
-import {RegisterComponent} from './register/register.component';
-import {RequestFormComponent} from './request-form/request-form.component';
-import {CanvasComponent} from './canvas/canvas.component';
-import {ButtonModule, CheckboxModule, KeyFilterModule, TableModule} from 'primeng';
-import {HistoryTableComponent} from './history-table/history-table.component';
-import {HeaderComponent} from './header/header.component';
-import {registerLocaleData} from '@angular/common';
-import localeRu from '@angular/common/locales/ru';
-import {NotAuthGuard} from './_guards/not-auth.guard';
-
-registerLocaleData(localeRu, 'ru');
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        FormsModule,
-        HttpClientModule,
-        routing,
-        CheckboxModule,
-        ButtonModule,
-        TableModule,
-        KeyFilterModule
-    ],
     declarations: [
         AppComponent,
-        HomeComponent,
         LoginComponent,
         RegisterComponent,
-        RequestFormComponent,
-        CanvasComponent,
-        HistoryTableComponent,
-        HeaderComponent],
-    providers: [
-        AuthGuard,
-        NotAuthGuard,
-        AuthenticationService,
-        HistoryTableComponent,
-        RequestFormComponent,
-        UserService,
-        PointService,
-        CanvasService,
-        CanvasComponent,
-        {provide: LOCALE_ID, useValue: 'ru'},
+        HomeComponent,
+        HistoryComponent,
+        CheckPointComponent,
+        InfoComponent,
+        HeaderComponent
     ],
+    imports: [
+        BrowserModule, HttpClientModule, HttpModule, FormsModule, routing, CheckboxModule, ButtonModule, TableModule,
+    ],
+    providers: [AuthService, AccountService, AuthGuard, NotAuthGuard, PointsService],
     bootstrap: [AppComponent]
 })
-
 export class AppModule {
 }

@@ -1,0 +1,10 @@
+#info-page {
+    text-align: center;
+    color: #080808;
+    background-color: rgba(185, 185, 185, 0.76);
+}
+
+.details {
+    display: -moz-inline-box;
+    display: -webkit-inline-box
+}
