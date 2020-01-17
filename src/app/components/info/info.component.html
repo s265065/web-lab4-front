@@ -1,41 +1,31 @@
 <div id="info-page">
-    <br>
-    <!--  <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"/>-->
-    <!--  TODO: pass user object here-->
-    <h3>Добрый вечер, {{username}}!</h3>
+  <br>
+  <!--  <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"/>-->
+  <!--  TODO: pass user object here-->
+  <h3>Добрый вечер, {{username}}!</h3>
 
-    <div class="details">
-        <details id="about-user" style="margin-top: 20%;">
-            <summary>Статистика</summary>
+  <div class="details">
+    <details id="about-user" style="margin-top: 20%; margin-bottom: 20%">
+      <summary>Статистика</summary>
 
-            <strong>Всего запусков: </strong> <span>{{pointsAmount}}</span> <br>
-            <strong>Из них успешных: </strong> <span>{{hitPercentage}}</span><br>
-            <span *ngIf="pointsAmount>0">
+      <strong>Всего запусков: </strong> <span>{{pointsAmount}}</span> <br>
+      <strong>Из них успешных: </strong> <span>{{hitPercentage}}</span><br>
+      <span *ngIf="pointsAmount>0">
       <strong>Точность: </strong> <span>{{hitPercentage / pointsAmount * 100}} %</span>
     </span>
 
-            <div *ngFor="let r of AVAILABLE_R">
-                <details>
-                    <summary>{{r}}</summary>
-                    <strong>Всего запусков: </strong> <span>{{pointsAmountR[r + 4]}}</span> <br>
-                    <strong>Из них успешных: </strong> <span>{{hitPercentageR[r + 4]}}</span> <br>
-                    <span *ngIf="pointsAmountR[r + 4] > 0">
+      <div *ngFor="let r of AVAILABLE_R">
+        <details>
+          <summary>{{r}}</summary>
+          <strong>Всего запусков: </strong> <span>{{pointsAmountR[r + 4]}}</span> <br>
+          <strong>Из них успешных: </strong> <span>{{hitPercentageR[r + 4]}}</span> <br>
+          <span *ngIf="pointsAmountR[r + 4] > 0">
             <strong>Точность: </strong> <span>{{ hitPercentageR[r + 4] / pointsAmountR[r + 4] * 100}} %</span>
           </span>
-                </details>
-            </div>
         </details>
-
-        <details id="about-project">
-            <summary>...</summary>
-            <p style="font-size: larger;">
-
-                <strong>Authors</strong>: Бострикова Дарья Воронковва Инна<br>
-                <strong>Src</strong>: <a href="//github.com/DeltaThreeEight/Lab4-Web">repo of Gosha</a> || <a
-                href="//github.com/SunnyCapt/Lab4-Web">repo of Karlen</a><br>
-                <strong>Var</strong>: 20151
-            </p></details>
-    </div>
+      </div>
+    </details>
+  </div>
 
 
 </div>

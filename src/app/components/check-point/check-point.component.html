@@ -1,51 +1,51 @@
 <div class="canvas-form">
-    <div class="request-form">
-        <form #f="ngForm" (ngSubmit)="addPointsFromForm()" class="block {{isDesktopDisplay()?'desktop-form':''}}"
-              id="formId" name="form-check" novalidate>
-            <div *ngIf="errorMessage" class="alert alert-danger" role="alert">{{errorMessage}}</div>
+  <div class="request-form">
+    <form #f="ngForm" (ngSubmit)="addPointsFromForm()" class="block {{isDesktopDisplay()?'desktop-form':''}}"
+          id="formId" name="form-check" novalidate>
+      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">{{errorMessage}}</div>
 
-            <div class="xInput">
-                <div *ngFor="let x of AVAILABLE_X" [id]="'checkX'+x" class="amazing-checkbox">
-                    <label>
-                        <p-checkbox #selectX (click)="checked('X',selectX.value)" [(ngModel)]="selectedX"
-                                    inputId="{{x}}"
-                                    name="X" value="{{x}}"
-                        ></p-checkbox>
-                        <span>{{x}}</span>
-                    </label>
-                </div>
-            </div>
-            <br>
+      <div class="xInput">
+        <div *ngFor="let x of AVAILABLE_X" [id]="'checkX'+x" class="amazing-checkbox">
+          <label>
+            <p-checkbox #selectX (click)="checked('X',selectX.value)" [(ngModel)]="selectedX" inputId="{{x}}"
+                        name="X" value="{{x}}"
+            ></p-checkbox>
+            <span>{{x}}</span>
+          </label>
+        </div>
+      </div>
+      <br>
 
-            <div class="yInput">
-                <input [(ngModel)]="selectedY" name="Y" pInputText pKeyFilter="num" placeholder="-5...3" type="text"/>
-            </div>
+      <div class="yInput">
+        <input [(ngModel)]="selectedY" name="Y" pInputText pKeyFilter="num" placeholder="-5...3" type="text"/>
+      </div>
 
-            <br>
-            <div class="rInput">
-                <div *ngFor="let r of AVAILABLE_R" [id]="'checkR'+r" class="amazing-checkbox">
-                    <label>
-                        <p-checkbox #selectR (onChange)="drawGraphic(selectR.value)" [(ngModel)]="selectedR"
-                                    inputId="{{r}}"
-                                    name="R" value="{{r}}"
-                        ></p-checkbox>
-                        <span>{{r}}</span>
-                    </label>
-                </div>
-            </div>
-            <br>
+      <br>
+      <div class="rInput">
+        <div *ngFor="let r of AVAILABLE_R" [id]="'checkR'+r" class="amazing-checkbox">
+          <label>
+            <p-checkbox #selectR (onChange)="drawGraphic(selectR.value)" [(ngModel)]="selectedR" inputId="{{r}}"
+                        name="R" value="{{r}}"
+            ></p-checkbox>
+            <span>{{r}}</span>
+          </label>
+        </div>
+      </div>
+      <br>
 
-            <div class="btn-cntnr">
-                <p-button class="btn-primary" label="Полетели!" type="submit"></p-button>
-            </div>
-        </form>
-    </div>
-    <div></div>
-    <div class="{{isDesktopDisplay()?'':'flex-g-center'}}">
-        <canvas #canvas (click)="addPointFromCanvas()" class="block {{isDesktopDisplay()?'desktop-canvas':''}}"
-                height="400"
-                width="400">
-        </canvas>
-    </div>
+      <div class="btn-cntnr">
+        <p-button class="btn-primary" label="Полетели!" type="submit"></p-button>
+      </div>
+      <!--    <div class ="nyan">-->
+      <!--      <img src="./assets/gifs/nyancat.gif" alt=""  width="300">-->
+      <!--    </div>-->
+    </form>
+  </div>
+  <div></div>
+  <div class="{{isDesktopDisplay()?'':'flex-g-center'}}">
+    <canvas #canvas (click)="addPointFromCanvas()" class="block {{isDesktopDisplay()?'desktop-canvas':''}}" height="400"
+            width="400">
+    </canvas>
+  </div>
 </div>
 

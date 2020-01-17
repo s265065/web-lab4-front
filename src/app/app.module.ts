@@ -24,21 +24,21 @@ import {NotAuthGuard} from './urlPermission/not-auth.guard';
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        LoginComponent,
-        RegisterComponent,
-        HomeComponent,
-        HistoryComponent,
-        CheckPointComponent,
-        InfoComponent,
-        HeaderComponent
-    ],
-    imports: [
-        BrowserModule, HttpClientModule, HttpModule, FormsModule, routing, CheckboxModule, ButtonModule, TableModule,
-    ],
-    providers: [AuthService, AccountService, AuthGuard, NotAuthGuard, PointsService],
-    bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+    HistoryComponent,
+    CheckPointComponent,
+    InfoComponent,
+    HeaderComponent
+  ],
+  imports: [
+    BrowserModule, HttpClientModule, HttpModule, FormsModule, routing, CheckboxModule, ButtonModule, TableModule,
+  ],
+  providers: [AuthService, AccountService, AuthGuard, NotAuthGuard, PointsService],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }

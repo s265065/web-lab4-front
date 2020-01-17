@@ -8,13 +8,14 @@ import {NotAuthGuard} from './urlPermission/not-auth.guard';
 
 const appRoutes: Routes = [
 
-    {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-    {path: 'check-point', component: HomeComponent, canActivate: [AuthGuard]},
-    {path: 'history', component: HomeComponent, canActivate: [AuthGuard]},
-    {path: 'login', component: LoginComponent, canActivate: [NotAuthGuard]},
-    {path: 'register', component: RegisterComponent, canActivate: [NotAuthGuard]},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'check-point', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'history', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: 'login', component: LoginComponent, canActivate: [NotAuthGuard]},
+  {path: 'register', component: RegisterComponent, canActivate: [NotAuthGuard]},
 
-    {path: '**', redirectTo: '/home'}
+  // otherwise redirect to profile
+  {path: '**', redirectTo: '/home'}
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

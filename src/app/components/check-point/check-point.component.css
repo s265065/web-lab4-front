@@ -4,9 +4,9 @@
 
 .rInput, .xInput, .yInput, .btn-cntnr
 {
-    margin-left: auto;
-    margin-right: auto;
-    display: table;
+  margin-left: auto;
+  margin-right: auto;
+  display: table;
 }
 
 
@@ -20,8 +20,8 @@
 }
 
 .amazing-checkbox > label {
-    display: contents;
-    cursor: pointer;
+  display: contents;
+  cursor: pointer;
 }
 
 .amazing-checkbox > label > p-checkbox {
@@ -47,8 +47,8 @@
 }
 
 .checked {
-    background: url('../../../assets/img/paws/white-paw.png') center/contain no-repeat;
-    color: #080808;
+  background: url('../../../assets/img/paws/white-paw.png') center/contain no-repeat;
+  color: #080808;
 }
 
 
@@ -64,70 +64,71 @@ input{
 }
 
 .btn-cntnr > .btn-primary .ui-button {
-    /*height: 37px;*/
-    /*width: 108px;*/
-    border-radius: 10px !important;
-    padding: 5px;
-    /*border: 2px solid cadetblue;*/
-    outline: none;
-    color: azure;
-    background: rgba(48, 48, 48, 0.65);
-    font-family: Courier New, monospace;
-    font-size: large;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: pointer;
+  /*height: 37px;*/
+  /*width: 108px;*/
+  border-radius: 10px !important;
+  padding: 5px;
+  /*border: 2px solid cadetblue;*/
+  outline: none;
+  color: azure;
+  background: rgba(48, 48, 48, 0.65);
+  font-family: Courier New, monospace;
+  font-size: large;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
 }
 
 .btn-primary .ui-button:hover {
-    background: rgba(48, 48, 48, 0.94);
-    /*border-color: #191919;*/
+  background: rgba(48, 48, 48, 0.94);
+  /*border-color: #191919;*/
 }
 
 .btn-primary {
-    color: azure;
-    background: rgba(48, 48, 48, 0.65);
-    border-color: rgba(0, 123, 255, 0);
+  color: azure;
+  background: rgba(48, 48, 48, 0.65);
+  border-color: rgba(0, 123, 255, 0);
 }
 
+
 canvas {
-    background-image: url("../../../assets/img/backgrounds/black.jpg");
+  background-image: url("../../../assets/img/backgrounds/black.jpg");
 }
 
 
 .request-form {
-    margin-bottom: auto;
-    margin-top: auto;
+  margin-bottom: auto;
+  margin-top: auto;
 }
 
 @media (min-width: 1105px) {
-    .canvas-form {
-        display: flex;
-    }
+  .canvas-form {
+    display: flex;
+  }
 }
 
 .home, .canvas-form, .request-form, .table-view {
-    margin-left: auto;
-    margin-right: auto;
-    display: inline-flex;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-flex;
 }
 
 
 @media (max-width: 1104px) {
-    .canvas-form {
-        margin-right: auto;
-        margin-left: auto;
-        display: grid;
-    }
+  .canvas-form {
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+  }
 }
 
 @media (max-width: 790px) {
-    .canvas-form {
-        margin-right: auto;
-        margin-left: auto;
-        display: grid;
-    }
+  .canvas-form {
+    margin-right: auto;
+    margin-left: auto;
+    display: grid;
+  }
 }
 
